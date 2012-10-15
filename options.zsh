@@ -18,6 +18,8 @@ setopt list_packed
 setopt list_types
 setopt long_list_jobs
 setopt magic_equal_subst
+setopt noequals
+#setopt nonomatch
 setopt multibyte
 setopt NO_c_bases
 setopt NO_complete_aliases
