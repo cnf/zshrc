@@ -45,6 +45,10 @@ function getla {
         uptime | cut -d ":" -f 4 | cut -d ' ' -f 2
         return
     fi
+    if [[ "$VENDOR" == "apple" || "$VENDOR" == "portbld" ]]; then
+        uptime | cut -d ":" -f 3 | cut -d ',' -f 2
+        return
+    fi
     cat /proc/loadavg | cut -d " " -f 1
 }
 
