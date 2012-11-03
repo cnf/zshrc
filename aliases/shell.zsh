@@ -12,6 +12,10 @@ if [[ "$VENDOR" == "apple" ]]; then
 
     alias stroke='/Applications/Utilities/Network\ Utility.app/Contents/Resources/stroke'
     alias scan='sudo nmap -sS -PN'
+elif [[ "$VENDOR" == "portbld" ]]; then
+    alias d='du -h -d 1'
+    alias grep='grep --colour'
+    alias ls='ls -F -G'
 else
     alias d='du --total -h --max-depth=1'
     alias ls='ls -F --color=auto'
