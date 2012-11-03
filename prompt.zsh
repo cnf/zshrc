@@ -41,7 +41,7 @@ function venv {
 }
 
 function getla {
-    if [[ "$VENDOR" == "apple" ]]; then
+    if [[ "$VENDOR" == "apple" || "$VENDOR" == "portbld" ]]; then
         uptime | cut -d ":" -f 4 | cut -d ' ' -f 2
         return
     fi
