@@ -12,7 +12,7 @@ case $TERM in
         
         # Special function preexec, executed before running each command.
         function preexec () {
-            print -Pn "\e]2;${2:q} — %~\a"
+            print -Pn "\e]2;${2:q} — %2~\a"
         }
 esac
 
