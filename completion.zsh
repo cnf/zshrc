@@ -1,7 +1,8 @@
 # Completion tweaks.
 
 # Load hostnames from /etc/hosts and ~/.ssh/known_hosts.
-hosts=($(cat /etc/hosts | grep -v "^#" | awk '{print $1}'| cut -d"," -f1), $(cat $HOME/.ssh/known_hosts | awk '{print $1}'| cut -d"," -f1))
+#hosts=($(cat /etc/hosts | grep -v "^#" | awk '{print $1}'| cut -d"," -f1), $(cat $HOME/.ssh/known_hosts | awk '{print $1}'| cut -d"," -f1))
+hosts=($(cat /etc/hosts | grep -v "^#" | awk '{print $1}'| cut -d"," -f1))
 zstyle ':completion:*' hosts $hosts
 
 #zstyle ':completion:*' menu select
