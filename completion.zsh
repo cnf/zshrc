@@ -11,6 +11,13 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
+# do not complete internal functions
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+#If you want it to complete users if and only if it can't complete anything else,
+#drop the trailing "-".
+zstyle ':completion::complete:cd::' tag-order '! users' -
+
 
 #fpath=($ZDOTDIR/comp $fpath)
 # brew install zsh-completions
