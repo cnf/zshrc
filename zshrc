@@ -43,8 +43,8 @@ load history
 load prompt
 load completion
 load i10n
-load os-specific
 load local
+load os-specific
 
 # this shit won't work anywhere else!!!
 setopt print_exit_value
