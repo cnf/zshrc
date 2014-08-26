@@ -46,7 +46,7 @@ function battery_charge {
         bat_color=""
     elif [[ "$ac_adapt" == "Yes" && "$charging" == "Yes" ]]
     then
-        bat_charge=`echo -e '\U26A1\UFE0E'`
+        bat_charge=`echo -e '\U26A1%{\UFE0E%}'`
         bat_color="%B%F{black}"
     else
         if [[ $bat_percent -ge 80 ]]
