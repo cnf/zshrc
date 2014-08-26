@@ -116,8 +116,8 @@ function vcs_prompt_info {
 
 
 setopt PROMPT_SUBST
-PROMPT='$user %B%F{blue}%2~ $(rsymbol) %{$reset_color%}'
-RPS1='$(vcs_prompt_info)%{$reset_color%}$(venv)  $(battery_charge)%{$reset_color%}'
-#RPS1='%{$reset_color%}$(venv)%{$reset_color%}  %B%F{black}$(getla)%{$reset_color%}'
+PROMPT='%{$reset_color%}$user %B%F{blue}%2~ $(rsymbol) %{$reset_color%}'
+RPROMPT='%{$reset_color%}$(vcs_prompt_info)%{$reset_color%}$(venv)  $(battery_charge)%{$reset_color%}'
+SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
