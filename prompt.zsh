@@ -20,10 +20,10 @@ esac
 autoload -z colors; colors
 
 if [ $UID -eq 0 ]; then
-    user="%B%F{red}%m%{$reset_color%}"
+    user="%B%F{red}%m%f%b"
     symbol='#'
 else
-    user="%B%F{green}%m%{$reset_color%}"
+    user="%B%F{green}%m%f%b"
     symbol='$'
 fi
 
@@ -43,13 +43,11 @@ function battery_charge {
     then
         bat_charge=""
         bat_color=""
-        # return
     elif [[ "$ac_adapt" == "Yes" && "$charging" == "Yes" ]]
     then
         bat_charge=`echo -e '\U26A1\UFE0E'`
         bat_color="%B%F{black}"
     else
-
         if [[ $bat_percent -ge 80 ]]
         then
             bat_charge=`echo -e '\U0025CF\U0025CF\U0025CF'`
@@ -71,7 +69,7 @@ function battery_charge {
             bat_color="\e[5m%F{red}"
         fi
     fi
-    echo "%{$bat_color%}$bat_charge%{$reset_color%}"
+    echo "%f%b$bat_color$bat_charge%f%b"
     # U+26A1⚡
     return
 }
@@ -85,8 +83,8 @@ function rsymbol {
 
 function venv {
     [ $VIRTUAL_ENV ] || return
-    # echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV} | tr '[A-Z]' '[a-z]')%{$reset_color%}"
-    echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV})%{$reset_color%}"
+    # echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV} | tr '[A-Z]' '[a-z]')%f%b"
+    echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV})%f%b"
 }
 
 function getla {
@@ -101,14 +99,6 @@ function getla {
     cat /proc/loadavg | cut -d " " -f 1
 }
 
-#autoload -Uz vcs_info
-##zstyle ':vcs_info:*' actionformats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-##zstyle ':vcs_info:*' formats '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-##zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
-#zstyle ':vcs_info:*' check-for-changes true
-#zstyle ':vcs_info:*' stagedstr "⚐"
-#zstyle ':vcs_info:*' unstagedstr "⚑"
-#zstyle ':vcs_info:git*' formats "%B%F{yellow}‹%r/%b› %m%u%c% %{$reset_color%}"
 function vcs_prompt_info {
     echo "$(git_prompt_info)"
     #echo "${vcs_info_msg_0_}$(git_prompt_info)"
@@ -116,8 +106,8 @@ function vcs_prompt_info {
 
 
 setopt PROMPT_SUBST
-PROMPT='%{$reset_color%}$user %B%F{blue}%2~ $(rsymbol) %{$reset_color%}'
-RPROMPT='%{$reset_color%}$(vcs_prompt_info)%{$reset_color%}$(venv)  $(battery_charge)%{$reset_color%}'
+PROMPT='%f%b$user %B%F{blue}%2~ $(rsymbol)%f%b '
+RPROMPT='%f%b$(vcs_prompt_info)%f%b$(venv)  $(battery_charge)%f%b'
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
