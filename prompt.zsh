@@ -35,6 +35,7 @@ function battery_charge {
         charging=`echo ${bat_data}|grep IsCharging|awk '{print $3}'`
         full=`echo ${bat_data}|grep FullyCharged|awk '{print $3}'`
         bat_percent=`echo ${bat_data} | awk '$1~/Capacity/{c[$1]=$3} END{OFMT="%.0f"; max=c["\"MaxCapacity\""]; print (max>0? 100*c["\"CurrentCapacity\""]/max: "?")}'`
+        time_left=`echo ${bat_data}|grep TimeRemaining|awk '{print $3}'`
     else
         return
     fi
@@ -66,10 +67,14 @@ function battery_charge {
             bat_color="%F{red}"
         else
             bat_charge=`echo -e '\U0025CB\U0025CB\U0025CB'`
-            bat_color="\e[5m%F{red}"
+            bat_color="%{\e[5m%}%F{red}"
+        fi
+        if [[ $time_left -le 10 ]]
+        then
+            bat_color="%{\e[5m%}%K{red}"
         fi
     fi
-    echo "%f%b$bat_color$bat_charge%f%b"
+    echo "%f%b$bat_color$bat_charge%f%b%k"
     # U+26A1⚡
     return
 }
