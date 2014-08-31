@@ -89,7 +89,7 @@ function rsymbol {
 function venv {
     [ $VIRTUAL_ENV ] || return
     # echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV} | tr '[A-Z]' '[a-z]')%f%b"
-    echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV})%f%b"
+    echo "  %B%F{cyan}$(basename ${VIRTUAL_ENV})%f%b%k"
 }
 
 function getla {
