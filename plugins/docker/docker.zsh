@@ -12,7 +12,12 @@ then
 fi
 
 function dockersh() {
-    docker run -t -i --rm $@ ubuntu
+    docker run -t -i --rm $@ ubuntu:14.04
+}
+
+function dockervolume() {
+    echo "docker run --name $1 --volume $2 scratch volume"
+    docker run --name $1 --volume $2 scratch volume
 }
 
 function docker-rmi-none() {
