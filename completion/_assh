@@ -1,0 +1,22 @@
+#compdef assh
+# https://gist.github.com/ocean90/3e5da3c526c66144eab3a78b0101b2ec
+
+# assh autocompletion for oh-my-zsh
+# Requires: assh installed
+# Author: Dominik Schilling (@ocean90)
+
+# Install:
+# Copy the file to ~/.oh-my-zsh/plugins/assh/_assh and add assh to the plugins list in your ~/.zshrc file.
+
+# Resources:
+# https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/tmux-cssh/_tmux-cssh
+# https://github.com/zsh-users/zsh/blob/master/Completion/Unix/Command/_ssh
+# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+
+_arguments \
+  '(-c --config)'{-c,--config=}'[location of config file]:filename:_files' \
+  '(-D --debug)'{-D,--debug}'[debug mode]' \
+  '(-V --verbose)'{-V,--verbose}'[verbose mode]' \
+  '(-h --help)'{-h,--help}'[show help]' \
+  '(-v --version)'{-v,--version}'[print the version]' \
+  '*:host:_hosts' && return 0
