@@ -26,6 +26,11 @@ if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]]; then
         printf '\e]7;%s\a' "$PWD_URL"
     }
 
+    # system-wide environment settings for zsh(1)
+    if [ -x /usr/libexec/path_helper ]; then
+        eval `/usr/libexec/path_helper -s`
+    fi
+
     # Register the function so it is called whenever the working
     # directory changes.
     autoload add-zsh-hook
