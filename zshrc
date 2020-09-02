@@ -48,3 +48,6 @@ load os-specific
 
 # this shit won't work anywhere else!!!
 setopt print_exit_value
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc

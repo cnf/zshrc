@@ -53,15 +53,15 @@ function battery_charge {
         then
             bat_charge=`echo -e '\U0025CF\U0025CF\U0025CF'`
             bat_color="%F{green}"
-        elif [[ $bat_percent -ge 60 ]]
+        elif [[ $bat_percent -ge 50 ]]
         then
             bat_charge=`echo -e '\U0025CF\U0025CF\U0025CB'`
-            bat_color="%F{yellow}"
-        elif [[ $bat_percent -ge 40 ]]
+            bat_color="%F{green}"
+        elif [[ $bat_percent -ge 25 ]]
         then
             bat_charge=`echo -e '\U0025CF\U0025CB\U0025CB'`
             bat_color="%F{yellow}"
-        elif [[ $bat_percent -ge 20 ]]
+        elif [[ $bat_percent -ge 10 ]]
         then
             bat_charge=`echo -e '\U0025CB\U0025CB\U0025CB'`
             bat_color="%F{red}"
