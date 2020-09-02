@@ -25,6 +25,9 @@ fpath=(/usr/local/share/zsh-completions /usr/local/share/zsh/site-functions ~/.z
 
 autoload -U compinit && compinit
 
+# Specific commands loading
+if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi
+
 # Testing menu list completion.
 zmodload zsh/complist
 bindkey -M menuselect '^M' .accept-line
