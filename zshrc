@@ -30,10 +30,10 @@ function load {
 
 # Chain load the various components of our configuration.
 #load oh-my-zsh
+load variables
 load lib
 load plugins
 load shell
-load variables
 load functions
 load aliases
 load options
